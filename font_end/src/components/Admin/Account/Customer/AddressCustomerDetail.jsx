@@ -171,7 +171,7 @@ function AddressCustomerDetail() {
                     htmlType="submit"
                     className="bg-success"
                   >
-                    <i className="fas fa-plus-circle me-1"></i> Thêm
+                     Thêm
                   </Button>
                 </div>
               </Form>

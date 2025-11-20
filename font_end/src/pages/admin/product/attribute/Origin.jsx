@@ -262,7 +262,7 @@ function Origin() {
   return (
     <BaseUI>
       <div className="origin-container">
-        <h6 className="fw-semibold origin-title">Danh sách xuất xứ</h6>
+        <h6 className="fw-semibold origin-title">DANH SÁCH XUẤT XỨ</h6>
         <div className="card p-3 mb-3">
           <h6 className="fw-semibold">Bộ lọc</h6>
           <Row gutter={10}>
@@ -296,7 +296,7 @@ function Origin() {
                 onClick={showModalAdd}
                 className="bg-primary w-100"
               >
-                <i className="fas fa-plus-circle me-1"></i>THÊM XUẤT XỨ
+                THÊM XUẤT XỨ
               </Button>
             </Link>
           </div>
@@ -336,7 +336,7 @@ function Origin() {
               </Form.Item>
               <div className="d-flex justify-content-end">
                 <Button type="primary" htmlType="submit">
-                  <i className="fas fa-plus-circle me-1"></i> THÊM
+                   THÊM XUẤT XỨ
                 </Button>
               </div>
             </Form>
@@ -360,7 +360,7 @@ function Origin() {
               </Form.Item>
               <div className="d-flex justify-content-end">
                 <Button type="primary" htmlType="submit">
-                  <i className="fas fa-plus-circle me-1"></i> Cập nhật
+                   Cập nhật
                 </Button>
               </div>
             </Form>

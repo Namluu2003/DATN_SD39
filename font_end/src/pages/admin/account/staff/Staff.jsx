@@ -136,7 +136,7 @@ function Staff() {
   return (
     <BaseUI>
       <div className="brand-container">
-        <h6 className="fw-semibold brand-title">Danh sách nhân viên</h6>
+        <h6 className="fw-semibold brand-title">DANH SÁCH NHÂN VIÊN</h6>
         <div className="card p-3 mb-3">
           <h6 className="fw-semibold">Bộ lọc</h6>
           <Row gutter={10}>
@@ -165,7 +165,7 @@ function Staff() {
           <h6 className="fw-semibold">Bảng nhân viên</h6>
           <Link to={"/admin/staff/add"}>
             <Button type="primary" className="bg-primary">
-              <i className="fas fa-plus-circle me-1"></i>Thêm nhân viên
+              THÊM NHÂN VIÊN
             </Button>
           </Link>
         </div>

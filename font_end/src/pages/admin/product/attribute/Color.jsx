@@ -265,7 +265,7 @@ document.head.appendChild(styleSheet);
   return (
     <BaseUI>
     <div className="brand-container ">
-      <h6 className="fw-semibold brand-title">Danh sách màu sắc</h6>
+      <h6 className="fw-semibold brand-title">DANH SÁCH MÀU SẮC</h6>
 
       <div className="card p-3 mb-3">
         <h6 className="fw-semibold">Bộ lọc</h6>
@@ -302,7 +302,7 @@ document.head.appendChild(styleSheet);
               onClick={showModalAdd}
               className="bg-primary w-100"
             >
-              <i className="fas fa-plus-circle me-1"></i>THÊM MÀU SẮC
+              THÊM MÀU SẮC
             </Button>
           </Link>
         </div>
@@ -345,7 +345,7 @@ document.head.appendChild(styleSheet);
 
             <div className="d-flex justify-content-end">
               <Button type="primary" htmlType="submit">
-                <i className="fas fa-plus-circle me-1"></i> THÊM
+                THÊM MÀU SẮC
               </Button>
             </div>
           </Form>
@@ -370,7 +370,7 @@ document.head.appendChild(styleSheet);
 
             <div className="d-flex justify-content-end">
               <Button type="primary" htmlType="submit">
-                <i className="fas fa-plus-circle me-1"></i> Cập nhật
+                 Cập nhật
               </Button>
             </div>
           </Form>

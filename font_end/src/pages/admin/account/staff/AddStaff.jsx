@@ -1,4 +1,14 @@
-import { Breadcrumb, Button, Col, Divider, Form, Input, Modal, Radio, Row } from "antd";
+import {
+  Breadcrumb,
+  Button,
+  Col,
+  Divider,
+  Form,
+  Input,
+  Modal,
+  Radio,
+  Row,
+} from "antd";
 import React, { useState } from "react";
 import { FaHome, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +47,10 @@ function AddStaff() {
         gender: splits[2],
         cccd: value.substring(0, 12),
         name: splits[0],
-        birthday: `${birthday.substring(4)}-${birthday.substring(2, 4)}-${birthday.substring(0, 2)}`,
+        birthday: `${birthday.substring(4)}-${birthday.substring(
+          2,
+          4
+        )}-${birthday.substring(0, 2)}`,
         specificAddress: splits[3],
       });
     }
@@ -72,19 +85,22 @@ function AddStaff() {
         cancelText: "Cancel",
         onOk: () => {
           request
-          .post("/staff", formData, { headers: { "Content-Type": "multipart/form-data", }, })
-          .then((response) => {
-            console.log(response);
-            setLoading(true);
-            if (response.data.success) {
-              setLoading(false);
-              toast.success("Thêm thành công!");
-              navigate("/admin/staff");
-            }
-          }).catch((e) => {
-            console.log(e);
-            toast.error(e.response.data);
-          });
+            .post("/staff", formData, {
+              headers: { "Content-Type": "multipart/form-data" },
+            })
+            .then((response) => {
+              console.log(response);
+              setLoading(true);
+              if (response.data.success) {
+                setLoading(false);
+                toast.success("Thêm thành công!");
+                navigate("/admin/staff");
+              }
+            })
+            .catch((e) => {
+              console.log(e);
+              toast.error(e.response.data);
+            });
         },
       });
     }
@@ -108,22 +124,43 @@ function AddStaff() {
         </div>
         
       </div> */}
-            <h6 className="fw-semibold brand-title" >Thêm nhân viên</h6>
+      <h6 className="fw-semibold brand-title">THÊM NHÂN VIÊN</h6>
 
       <Form onFinish={handleAddStaff} layout="vertical" form={form}>
         <Row gutter={24}>
           <Col span={8}>
-            <h6>Thông tin nhân viên</h6>
+            <h6>THÔNG TIN NHÂN VIÊN</h6>
             <Divider />
             {previewUrl !== null ? (
               <div className="text-center">
-                <img src={previewUrl} alt="Preview" style={{ width: "162px", height: "162px" }} className="mt-2 border border-primary shadow-lg bg-body-tertiary rounded-circle object-fit-contain" />
-                <Button className="position-absolute border-0" onClick={() => { setPreviewUrl(null); setAvatar(null); }}><FaTrash className="text-danger" /></Button>
+                <img
+                  src={previewUrl}
+                  alt="Preview"
+                  style={{ width: "162px", height: "162px" }}
+                  className="mt-2 border border-primary shadow-lg bg-body-tertiary rounded-circle object-fit-contain"
+                />
+                <Button
+                  className="position-absolute border-0"
+                  onClick={() => {
+                    setPreviewUrl(null);
+                    setAvatar(null);
+                  }}
+                >
+                  <FaTrash className="text-danger" />
+                </Button>
               </div>
             ) : (
               <div className="d-flex align-items-center justify-content-center">
-                <div className="position-relative rounded-circle border border-primary mt-2 d-flex align-items-center justify-content-center" style={{ width: "162px", height: "162px" }}>
-                  <Input type="file" accept="image/*" onChange={handleImageSelect} className="position-absolute opacity-0 py-5" />
+                <div
+                  className="position-relative rounded-circle border border-primary mt-2 d-flex align-items-center justify-content-center"
+                  style={{ width: "162px", height: "162px" }}
+                >
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageSelect}
+                    className="position-absolute opacity-0 py-5"
+                  />
                   <div className="text-center text-secondary">
                     <i className="fas fa-plus"></i> <br />
                     <span>Vui lòng chọn ảnh</span>
@@ -131,25 +168,58 @@ function AddStaff() {
                 </div>
               </div>
             )}
-            
           </Col>
           <Col span={16}>
-            
             <Divider />
-            <Form.Item label={"Username"} name={"username"} rules={[{ required: true, message: "Username không được để trống!" },]}>
+            <Form.Item
+              label={"Username"}
+              name={"username"}
+              rules={[
+                { required: true, message: "Username không được để trống!" },
+              ]}
+            >
               <Input placeholder="Nhập username..." />
             </Form.Item>
-            <Form.Item label={"Tên nhân viên"} name={"name"} rules={[{ required: true, message: "Tên không được để trống!" },{  pattern: /^[^\d!@#$%^&*()_+={}\\:;"'<>,.?/`~|-]+$/, message: "Tên phải là chữ"}]}>
+            <Form.Item
+              label={"Tên nhân viên"}
+              name={"name"}
+              rules={[
+                { required: true, message: "Tên không được để trống!" },
+                {
+                  pattern: /^[^\d!@#$%^&*()_+={}\\:;"'<>,.?/`~|-]+$/,
+                  message: "Tên phải là chữ",
+                },
+              ]}
+            >
               <Input placeholder="Nhập tên nhân viên..." />
             </Form.Item>
             <Row gutter={10}>
               <Col span={12}>
-              <Form.Item label={"CCCD/CMT"} name={"cccd"} rules={[{ required: true, message: "cccd được để trống!", },{ pattern: '^([0-9]{9}|[0-9]{12})$', message: "Mã định danh phải có 9 hoặc 12 kí tự!" }]}>
+                <Form.Item
+                  label={"CCCD/CMT"}
+                  name={"cccd"}
+                  rules={[
+                    { required: true, message: "cccd được để trống!" },
+                    {
+                      pattern: "^([0-9]{9}|[0-9]{12})$",
+                      message: "Mã định danh phải có 9 hoặc 12 kí tự!",
+                    },
+                  ]}
+                >
                   <Input placeholder="Nhập cccd hoặc cmt" />
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label={"Giới tính"} name={"gender"} rules={[{ required: true, message: "Giới tính không được để trống!", },]}>
+                <Form.Item
+                  label={"Giới tính"}
+                  name={"gender"}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Giới tính không được để trống!",
+                    },
+                  ]}
+                >
                   <Radio.Group>
                     <Radio value={"Nam"}>Nam</Radio>
                     <Radio value={"Nữ"}>Nữ</Radio>
@@ -157,55 +227,104 @@ function AddStaff() {
                 </Form.Item>
               </Col>
               <Col span={12}>
-  <Form.Item
-    label="Ngày sinh"
-    name="birthday"
-    rules={[
-      { required: true, message: "Ngày sinh không được để trống!" },
-      ({ getFieldValue }) => ({
-        validator(_, value) {
-          if (!value) return Promise.resolve();
+                <Form.Item
+                  label="Ngày sinh"
+                  name="birthday"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Ngày sinh không được để trống!",
+                    },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value) return Promise.resolve();
 
-          const today = new Date();
-          const birthDate = new Date(value);
-          const age = today.getFullYear() - birthDate.getFullYear();
-          const m = today.getMonth() - birthDate.getMonth();
+                        const today = new Date();
+                        const birthDate = new Date(value);
+                        const age =
+                          today.getFullYear() - birthDate.getFullYear();
+                        const m = today.getMonth() - birthDate.getMonth();
 
-          const is18 =
-            age > 18 || (age === 18 && m >= 0 && today.getDate() >= birthDate.getDate());
+                        const is18 =
+                          age > 18 ||
+                          (age === 18 &&
+                            m >= 0 &&
+                            today.getDate() >= birthDate.getDate());
 
-          return is18
-            ? Promise.resolve()
-            : Promise.reject("Người dùng phải đủ 18 tuổi trở lên!");
-        },
-      }),
-    ]}
-  >
-    <Input type="date" />
-  </Form.Item>
-</Col>
+                        return is18
+                          ? Promise.resolve()
+                          : Promise.reject(
+                              "Người dùng phải đủ 18 tuổi trở lên!"
+                            );
+                      },
+                    }),
+                  ]}
+                >
+                  <Input type="date" />
+                </Form.Item>
+              </Col>
 
               <Col span={12}>
-                <Form.Item label={"Email"} name={"email"} rules={[{ required: true, message: "Email không được để trống!" },]} >
+                <Form.Item
+                  label={"Email"}
+                  name={"email"}
+                  rules={[
+                    { required: true, message: "Email không được để trống!" },
+                  ]}
+                >
                   <Input placeholder="Nhập email ..." />
                 </Form.Item>
               </Col>
               <Col span={12}>
-                <Form.Item label={"Số điện thoại"} name={"phoneNumber"} rules={[{ required: true, message: "Số điện thoại không được để trống!", },{ pattern: '^0[0-9]{9}$', message: "SDT không đúng định dạng!" }]} >
+                <Form.Item
+                  label={"Số điện thoại"}
+                  name={"phoneNumber"}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Số điện thoại không được để trống!",
+                    },
+                    {
+                      pattern: "^0[0-9]{9}$",
+                      message: "SDT không đúng định dạng!",
+                    },
+                  ]}
+                >
                   <Input placeholder="Nhập số điện thoại ..." />
                 </Form.Item>
               </Col>
-              
+
               <GHNInfo dataAddress={setDataAddress} />
             </Row>
-           
-                <Form.Item label={"Địa chỉ cụ thể"} name={"specificAddress"} rules={[{ required: true, message: "Địa chỉ cụ thể không được để trống!", },]} >
-                  <Input placeholder="Nhập địa chỉ cụ thể ..." />
-                </Form.Item>
-             
+
+            <Form.Item
+              label={"Địa chỉ cụ thể"}
+              name={"specificAddress"}
+              rules={[
+                {
+                  required: true,
+                  message: "Địa chỉ cụ thể không được để trống!",
+                },
+              ]}
+            >
+              <Input placeholder="Nhập địa chỉ cụ thể ..." />
+            </Form.Item>
+
             <Form.Item className="mt-3 float-end">
               <Button type="primary" htmlType="submit" className="bg-primary">
-                <i className="fas fa-plus me-2"></i> Thêm nhân viên
+                <i className="fas fa-plus me-2"></i> THÊM NHÂN VIÊN
+              </Button>
+              <Button
+                type="default"
+                style={{
+                  backgroundColor: "#dc3545",
+                  color: "white",
+                  width: "150px",
+                  height: "46px",
+                }}
+                onClick={() => navigate("/admin/staff")}
+              >
+                <i className="fas fa-arrow-left me-2"></i> QUAY LẠI
               </Button>
             </Form.Item>
           </Col>

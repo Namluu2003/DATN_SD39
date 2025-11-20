@@ -256,7 +256,7 @@ function ShowProductModal({ idBill, onClose }) {
         onClick={() => setIsModalOpen(true)}
         className="bg-primary text-dark"
       >
-        Thêm sản phẩm
+        THÊM SẢN PHẨM
       </Button>
       <Modal
         open={isModalOpen}

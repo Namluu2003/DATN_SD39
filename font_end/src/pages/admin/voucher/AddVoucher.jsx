@@ -1,7 +1,3 @@
-
-
-
-
 import {
   Breadcrumb,
   Button,
@@ -84,7 +80,7 @@ function AddVoucherForm() {
 
   return (
     <BaseUI>
-      <h6 className="fw-semibold brand-title">Thêm phiếu giảm giá</h6>
+      <h6 className="fw-semibold brand-title">THÊM PHIẾU GIẢM GIÁ</h6>
       <div className="container">
         <Form onFinish={handAddVoucher} layout="vertical" form={form}>
           <Row gutter={10}>
@@ -160,7 +156,11 @@ function AddVoucherForm() {
                     required: true,
                     message: "Đơn tối thiểu không được để trống!",
                   },
-                  { validator: validateNonNegativeAndNonZero("Giá trị đơn tối thiểu") },
+                  {
+                    validator: validateNonNegativeAndNonZero(
+                      "Giá trị đơn tối thiểu"
+                    ),
+                  },
                 ]}
                 validateTrigger={["onChange", "onBlur"]}
               >
@@ -193,7 +193,11 @@ function AddVoucherForm() {
                     required: true,
                     message: "Giá trị giảm tối đa không được để trống!",
                   },
-                  { validator: validateNonNegativeAndNonZero("Giá trị giảm tối đa") },
+                  {
+                    validator: validateNonNegativeAndNonZero(
+                      "Giá trị giảm tối đa"
+                    ),
+                  },
                   ({ getFieldValue }) => ({
                     validator(_, value) {
                       const minBillValue = getFieldValue("minBillValue");
@@ -263,12 +267,28 @@ function AddVoucherForm() {
                 <Input type="datetime-local" />
               </Form.Item>
             </Col>
-            <Col span={12}>
-              <Form.Item className="mt-3 float-end">
+            <Col span={12} className="mt-3">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  gap: "10px",
+                }}
+              >
+                {/* Nút Thêm */}
                 <Button type="primary" htmlType="submit" className="bg-primary">
-                  <i className="fas fa-plus me-2"></i> Thêm phiếu giảm giá
+                  <i className="fas fa-plus me-2"></i> THÊM PHIẾU GIẢM GIÁ
                 </Button>
-              </Form.Item>
+
+                {/* Nút Quay lại */}
+                <Button
+                  type="default"
+                  style={{ backgroundColor: "#dc3545", color: "white" ,width: '150px',height: '46px'}}
+                  onClick={() => navigate("/admin/voucher")}
+                >
+                  <i className="fas fa-arrow-left me-2"></i> QUAY LẠI
+                </Button>
+              </div>
             </Col>
           </Row>
         </Form>

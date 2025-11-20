@@ -211,13 +211,13 @@ const Bill = ({ onLoad }) => {
     //       ),
     //     },
     {
-      title: 'Hành động',
+      title: 'Thao tác',
       dataIndex: 'id',
       key: '',
       render: (x, record) => (
         <>
           <Tooltip title="Xem chi tiết">
-            <Link to={`/admin/bill/${x}`}><Button type="text" icon={<i class="fas fa-ellipsis"></i>} /></Link>
+            <Link to={`/admin/bill/${x}`}><Button type="text"  icon={<i className="fas fa-edit" style={{ color: '#1890ff' }} />}  /></Link>
           </Tooltip>
           
         </>
@@ -231,7 +231,7 @@ const Bill = ({ onLoad }) => {
     <div className="brand-container">
       <div className="d-flex">
         <div className="flex-grow-1">
-          <h6 className="fw-semibold brand-title">Danh sách hoá đơn</h6>
+          <h6 className="fw-semibold brand-title">DANH SÁCH HOÁ ĐƠN</h6>
         </div>
         <div className="">
           <Input

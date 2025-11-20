@@ -261,7 +261,7 @@ function Sleeve() {
   return (
     <BaseUI>
       <div className="sleeve-container">
-        <h6 className="fw-semibold sleeve-title">Danh sách tay áo</h6>
+        <h6 className="fw-semibold sleeve-title">DANH SÁCH TAY ÁO</h6>
         <div className="card p-3 mb-3">
           <h6 className="fw-semibold">Bộ lọc</h6>
           <Row gutter={10}>
@@ -295,7 +295,7 @@ function Sleeve() {
                 onClick={showModalAdd}
                 className="bg-primary w-100"
               >
-                <i className="fas fa-plus-circle me-1"></i>THÊM TAY ÁO
+               THÊM TAY ÁO
               </Button>
             </Link>
           </div>
@@ -335,7 +335,7 @@ function Sleeve() {
               </Form.Item>
               <div className="d-flex justify-content-end">
                 <Button type="primary" htmlType="submit">
-                  <i className="fas fa-plus-circle me-1"></i> THÊM
+                   THÊM TAY ÁO
                 </Button>
               </div>
             </Form>
@@ -359,7 +359,7 @@ function Sleeve() {
               </Form.Item>
               <div className="d-flex justify-content-end">
                 <Button type="primary" htmlType="submit">
-                  <i className="fas fa-plus-circle me-1"></i> Cập nhật
+                   Cập nhật
                 </Button>
               </div>
             </Form>

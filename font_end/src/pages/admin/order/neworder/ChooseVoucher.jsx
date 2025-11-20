@@ -151,7 +151,7 @@ function ChooseVoucher({ onSelectVoucher, customerId, orderTotal = 0, selectedVo
         style={{
             backgroundColor: '#4CAF50',  // Màu nền nút
             borderColor: '#388E3C',  // Màu viền
-            borderRadius: '12px',  // Bo góc
+    
             padding: '8px 16px',  // Khoảng cách bên trong nút
             fontWeight: 'bold',  // In đậm chữ
             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',  // Hiệu ứng bóng đổ
@@ -159,7 +159,7 @@ function ChooseVoucher({ onSelectVoucher, customerId, orderTotal = 0, selectedVo
         }}
         className="custom-button"
     >
-        Chọn phiếu giảm giá
+        CHỌN PHIẾU GIẢM GIÁ
     </Button>
                     </div>
                 </div>

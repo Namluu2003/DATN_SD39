@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import * as request from "~/utils/httpRequest";
 import { toast } from "react-toastify";
@@ -197,14 +191,12 @@ function AddShoeModal({ onAddSuccess }) {
 
   return (
     <>
-      <Button type="primary" onClick={showModal} shape="circle" size="large">
+      {/* <Button type="primary" onClick={showModal} shape="circle" size="large">
         <FaPlusSquare />
+      </Button> */}
+      <Button type="primary" onClick={showModal} size="large">
+        THÊM SẢN PHẨM
       </Button>
-      
-
-
-
-
 
       <Modal
         title="Thêm áo"
@@ -236,7 +228,9 @@ function AddShoeModal({ onAddSuccess }) {
                 <Form.Item
                   label="Xuất xứ"
                   name="xuatXu"
-                  rules={[{ required: true, message: "Xuất xứ không được để trống!" }]}
+                  rules={[
+                    { required: true, message: "Xuất xứ không được để trống!" },
+                  ]}
                   style={{ flex: 1 }}
                 >
                   <Select
@@ -267,7 +261,12 @@ function AddShoeModal({ onAddSuccess }) {
                 <Form.Item
                   label="Thương hiệu"
                   name="thuongHieu"
-                  rules={[{ required: true, message: "Thương hiệu không được để trống!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Thương hiệu không được để trống!",
+                    },
+                  ]}
                   style={{ flex: 1 }}
                 >
                   <Select
@@ -298,7 +297,9 @@ function AddShoeModal({ onAddSuccess }) {
                 <Form.Item
                   label="Cổ áo"
                   name="coAo"
-                  rules={[{ required: true, message: "Cổ áo không được để trống!" }]}
+                  rules={[
+                    { required: true, message: "Cổ áo không được để trống!" },
+                  ]}
                   style={{ flex: 1 }}
                 >
                   <Select
@@ -331,7 +332,9 @@ function AddShoeModal({ onAddSuccess }) {
                 <Form.Item
                   label="Tay áo"
                   name="tayAo"
-                  rules={[{ required: true, message: "Tay áo không được để trống!" }]}
+                  rules={[
+                    { required: true, message: "Tay áo không được để trống!" },
+                  ]}
                   style={{ flex: 1 }}
                 >
                   <Select
@@ -362,7 +365,12 @@ function AddShoeModal({ onAddSuccess }) {
                 <Form.Item
                   label="Chất liệu"
                   name="chatLieu"
-                  rules={[{ required: true, message: "Chất liệu không được để trống!" }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Chất liệu không được để trống!",
+                    },
+                  ]}
                   style={{ flex: 1 }}
                 >
                   <Select
@@ -446,7 +454,7 @@ function AddShoeModal({ onAddSuccess }) {
 
           <div className="d-flex justify-content-end">
             <Button type="primary" htmlType="submit">
-              <i className="fas fa-plus-circle me-1"></i> Thêm
+              Thêm
             </Button>
           </div>
         </Form>

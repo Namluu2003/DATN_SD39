@@ -1,7 +1,3 @@
-
-
-
-
 import {
   Modal,
   Button,
@@ -164,7 +160,9 @@ function VoucherDetail() {
                     required: true,
                     message: "Phần trăm giảm không được để trống!",
                   },
-                  { validator: validateNonNegativeAndNonZero("Phần trăm giảm") },
+                  {
+                    validator: validateNonNegativeAndNonZero("Phần trăm giảm"),
+                  },
                   {
                     validator: (_, value) =>
                       value >= 1 && value <= 80
@@ -193,7 +191,11 @@ function VoucherDetail() {
                     required: true,
                     message: "Đơn tối thiểu không được để trống!",
                   },
-                  { validator: validateNonNegativeAndNonZero("Giá trị đơn tối thiểu") },
+                  {
+                    validator: validateNonNegativeAndNonZero(
+                      "Giá trị đơn tối thiểu"
+                    ),
+                  },
                 ]}
                 validateTrigger={["onChange", "onBlur"]}
               >
@@ -225,7 +227,11 @@ function VoucherDetail() {
                     required: true,
                     message: "Giảm tối đa không được để trống!",
                   },
-                  { validator: validateNonNegativeAndNonZero("Giá trị giảm tối đa") },
+                  {
+                    validator: validateNonNegativeAndNonZero(
+                      "Giá trị giảm tối đa"
+                    ),
+                  },
                   ({ getFieldValue }) => ({
                     validator(_, value) {
                       const minBillValue = getFieldValue("minBillValue");
@@ -302,7 +308,19 @@ function VoucherDetail() {
                   className="bg-primary"
                   style={{ marginTop: "23px" }}
                 >
-                  <i className="fas fa-save me-2"></i> Cập nhật
+                  <i className="fas fa-save me-2"></i> CẬP NHẬT
+                </Button>
+                <Button
+                  type="default"
+                  style={{
+                    backgroundColor: "#dc3545",
+                    color: "white",
+                    width: "150px",
+                    height: "46px",
+                  }}
+                  onClick={() => navigate("/admin/voucher")}
+                >
+                  <i className="fas fa-arrow-left me-2"></i> QUAY LẠI
                 </Button>
               </Form.Item>
             </Col>

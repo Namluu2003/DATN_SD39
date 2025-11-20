@@ -1,7 +1,7 @@
-.info-bill-container {
+/* .info-bill-container {
     max-width: 2000px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 16px 0 0 0;
     background: #f5f7fa;
     border-radius: 12px;
   }
@@ -89,7 +89,7 @@
   
   @media (max-width: 768px) {
     .info-bill-container {
-      padding: 16px;
+      padding: 0px;
     }
   
     .info-item {
@@ -106,4 +106,148 @@
       max-width: 100%;
       text-align: left;
     }
-  }
+  } */
+
+
+  /* Container tổng */
+.info-bill-container {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 24px 0;
+    background: #f0f2f5; /* nền sáng nhẹ */
+    border-radius: 20px;
+}
+
+/* Card thông tin */
+.info-card {
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f9fafb);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+/* Tiêu đề section */
+.section-title {
+    color: #096dd9; /* màu xanh đậm */
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Row chứa các thông tin */
+.info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Item thông tin */
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.info-item:hover {
+    background: #e6f7ff;
+    transform: translateY(-2px);
+}
+
+/* Nhãn và giá trị */
+.info-label {
+    color: #555;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.info-value {
+    color: #111;
+    font-weight: 600;
+    text-align: right;
+    font-size: 15px;
+}
+
+.info-value.highlight {
+    color: #f5222d; /* đỏ nổi bật */
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.info-value.total {
+    color: #1890ff; /* primary */
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.info-value.address {
+    max-width: 800px;
+    text-align: right;
+    word-break: break-word;
+}
+
+/* Voucher */
+.voucher-info {
+    background: linear-gradient(90deg, #bae7ff, #91d5ff);
+    padding: 14px 16px;
+    border-radius: 16px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #0050b3;
+    font-weight: 600;
+}
+
+/* Header Customer */
+.customer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Text màu */
+.text-danger {
+    color: #f5222d !important;
+}
+
+.text-success {
+    color: #52c41a !important;
+}
+
+/* Divider */
+.section-divider {
+    margin: 32px 0;
+    border-color: #d9d9d9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .info-bill-container {
+        padding: 16px 8px;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .info-value, .info-value.address {
+        text-align: left;
+    }
+
+    .info-value.address {
+        max-width: 100%;
+    }
+}

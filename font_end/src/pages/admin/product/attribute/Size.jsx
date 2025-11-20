@@ -267,7 +267,7 @@ document.head.appendChild(styleSheet);
   return (
     <BaseUI>
     <div className="brand-container">
-      <h6 className="fw-semibold brand-title">Danh sách kích cỡ</h6>
+      <h6 className="fw-semibold brand-title">DANH SÁCH KÍCH CỠ</h6>
       <div className="card p-3 mb-3">
         <h6 className="fw-semibold">Bộ lọc</h6>
         <Row gutter={10}>
@@ -314,7 +314,7 @@ document.head.appendChild(styleSheet);
               className="bg-primary w-200"
               style={{ height: "45px", lineHeight: "45px", fontSize: "16px" }}
             >
-              <i className="fas fa-plus-circle me-1"></i>THÊM KÍCH CỠ
+              THÊM KÍCH CỠ
             </Button>
           </Link>
         </div>
@@ -355,7 +355,7 @@ document.head.appendChild(styleSheet);
             </Form.Item>
             <div className="d-flex justify-content-end">
               <Button type="primary" htmlType="submit">
-                <i className="fas fa-plus-circle me-1"></i> THÊM
+                THÊM KÍCH CỠ
               </Button>
             </div>
           </Form>
@@ -379,7 +379,7 @@ document.head.appendChild(styleSheet);
             </Form.Item>
             <div className="d-flex justify-content-end">
               <Button type="primary" htmlType="submit">
-                <i className="fas fa-plus-circle me-1"></i> Cập nhật
+                 Cập nhật
               </Button>
             </div>
           </Form>

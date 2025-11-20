@@ -7,11 +7,12 @@ import AddressStaffDetail from "~/components/Admin/Account/Staff/AddressStaffDet
 import Loading from "~/components/Loading/Loading";
 import BaseUI from "~/layouts/admin/BaseUI";
 import * as request from "~/utils/httpRequest";
-
+import { useNavigate } from "react-router-dom";
 function StaffDetail() {
   const { id } = useParams();
   const [form] = Form.useForm();
   const [avatar, setAvatar] = useState(null);
+    const navigate = useNavigate();
   //  new
 
   const [loading, setLoading] = useState(true);
@@ -106,11 +107,11 @@ function StaffDetail() {
         {/* <Breadcrumb className="mb-3"
           items={[{ href: "/", title: <FaHome /> }, { href: "/admin/staff", title: "Danh sách nhân viên" }, { title: `${staff.name} - ${staff.cccd}` },]}
         /> */}
-              <h6 className="fw-semibold brand-title" >Cập nhật thông tin nhân viên</h6>
+              <h6 className="fw-semibold brand-title" >CẬP NHẬT THÔNG TIN NHÂN VIÊN</h6>
 
         <Row gutter={24}>
           <Col span={8} className="shadow p-3 mb-5 bg-body rounded">
-            <h6>Thông tin nhân viên</h6>
+            <h6>THÔNG TIN NHÂN VIÊN</h6>
             <Divider />
             <Form layout="vertical" form={form} onFinish={handleUpdate}>
               {previewUrl !== null ? (
@@ -154,13 +155,25 @@ function StaffDetail() {
               </Form.Item>
               <Form.Item className="float-end">
                 <Button type="primary" className="bg-primary" htmlType="submit">
-                  <i className="fas fa-edit me-2"></i> Cập nhật
+                  <i className="fas fa-edit me-2"></i> CẬP NHẬT
                 </Button>
+                <Button
+                                type="default"
+                                style={{
+                                  backgroundColor: "#dc3545",
+                                  color: "white",
+                                  width: "150px",
+                                  height: "46px",
+                                }}
+                                onClick={() => navigate("/admin/staff")}
+                              >
+                                <i className="fas fa-arrow-left me-2"></i> QUAY LẠI
+                              </Button>
               </Form.Item>
             </Form>
           </Col>
           <Col span={16}>
-            <h6>Thông tin địa chỉ</h6>
+            <h6>THÔNG TIN ĐỊA CHỈ</h6>
             <Divider />
             <AddressStaffDetail idStaff={id} />
           </Col>

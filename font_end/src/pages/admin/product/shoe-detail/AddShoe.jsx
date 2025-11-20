@@ -342,7 +342,7 @@ function AddProduct() {
               onClick={handleCreate}
               disabled={hasValidationErrors || !selectedProduct || selectedSizes.length === 0 || selectedColors.length === 0}
             >
-              Thêm chi tiết sản phẩm
+              THÊM CHI TIẾT SẢN PHẨM
             </Button>
           </>
         )}

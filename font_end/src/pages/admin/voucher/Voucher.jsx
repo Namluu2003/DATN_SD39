@@ -144,14 +144,19 @@ function Voucher() {
       render: (text, record, index) => indexOfFirstItem + index + 1,
     },
     {
-      title: "Mã phiếu giảm giá",
+      title: "Mã",
       dataIndex: "code",
       key: "code",
     },
     {
-      title: "Tên phiếu giảm giá",
+      title: "Tên",
       dataIndex: "name",
       key: "name",
+    },
+    {
+      title: "Số lượng",
+      dataIndex: "quantity",
+      key: "quantity",
     },
     {
       title: "Đơn hàng tối thiểu",
@@ -166,16 +171,12 @@ function Voucher() {
       render: (x) => <FormatCurrency value={x} />,
     },
     {
-      title: "Giảm",
+      title: "Giảm (%)",
       dataIndex: "percentReduce",
       key: "percentReduce",
       render: (x) => `${x}%`,
     },
-    {
-      title: "Số lượng",
-      dataIndex: "quantity",
-      key: "quantity",
-    },
+    
     {
       title: "Ngày bắt đầu",
       dataIndex: "startDate",
@@ -184,7 +185,7 @@ function Voucher() {
         const d = new Date(x);
         const formatted = d.toLocaleDateString("vi-VN");
         return (
-          <span className="badge text-white p-2" style={{ backgroundColor: "#28a745" }}>
+          <span className="badge text-black p-2" >
             {formatted}
           </span>
         );
@@ -198,7 +199,7 @@ function Voucher() {
     const d = new Date(x);
     const formatted = d.toLocaleDateString("vi-VN");
     return (
-      <span className="badge text-white p-2" style={{ backgroundColor: "#dc3545" }}>
+      <span className="badge text-black p-2" >
         {formatted}
       </span>
     );
@@ -271,7 +272,7 @@ function Voucher() {
   return (
     <BaseUI>
       <div className="brand-container">
-        <h6 className="fw-semibold brand-title">Danh sách phiếu giảm giá</h6>
+        <h6 className="fw-semibold brand-title">DANH SÁCH PHIẾU GIẢM GIÁ</h6>
         <div className="card p-3 mb-3">
           <h6 className="fw-semibold">Bộ lọc</h6>
           <Row gutter={12}>
@@ -305,7 +306,7 @@ function Voucher() {
             <h6 className="fw-semibold">Bảng phiếu giảm giá</h6>
             <Link to={"/admin/voucher/add"}>
               <Button type="primary" className="bg-primary" style={{ textAlign: "center" }}>
-                <i className="fas fa-plus-circle me-1"></i>Thêm phiếu giảm giá
+                THÊM PHIÊU GIẢM GIÁ
               </Button>
             </Link>
           </div>

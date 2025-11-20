@@ -135,7 +135,7 @@ function CreateAddressModal({ idCustomer, onSuccess }) {
 
           <div className="d-flex justify-content-end">
             <Button type="primary" htmlType="submit" className="bg-success">
-              <i className="fas fa-plus-circle me-1"></i> Thêm
+               Thêm
             </Button>
           </div>
         </Form>

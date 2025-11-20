@@ -25,7 +25,7 @@ function Order() {
 
   return (
     <BaseUI>
-    <h6 className="fw-semibold brand-title">Quản lý đơn hàng</h6>
+    <h6 className="fw-semibold brand-title">QUẢN LÝ ĐƠN HÀNG</h6>
     
     <Tabs defaultActiveKey="1" items={items} onChange={handleTabChange}/>
     </BaseUI>

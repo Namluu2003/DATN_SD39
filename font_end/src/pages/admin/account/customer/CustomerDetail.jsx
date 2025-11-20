@@ -19,11 +19,12 @@ import BaseUI from "~/layouts/admin/BaseUI";
 import * as request from "~/utils/httpRequest";
 import GHNInfo from "~/components/GhnInfo";
 import CreateAddressModal from "~/components/Admin/Account/Customer/CreateAddressModal";
-
+import { useNavigate } from "react-router-dom";
 function CustomerDetail() {
   const { id } = useParams();
   const [form] = Form.useForm();
   const [avatar, setAvatar] = useState(null);
+  const navigate = useNavigate();
   //  new
 
   const [loading, setLoading] = useState(true);
@@ -145,11 +146,11 @@ function CustomerDetail() {
             { title: `${customer.name} - ${customer.cccd}` },
           ]}
         /> */}
-              <h6 className="fw-semibold brand-title" >Cập nhật thông tin khách hàng</h6>
+              <h6 className="fw-semibold brand-title" >CẬP NHẬT THÔNG TIN KHÁCH HÀNG</h6>
 
         <Row gutter={24}>
           <Col span={8} className="shadow p-3 mb-5 bg-body rounded">
-            <h6>Thông tin khách hàng</h6>
+            <h6>THÔNG TIN KHÁCH HÀNG</h6>
             <Divider />
             <Form layout="vertical" form={form} onFinish={handleUpdate} >
               {previewUrl !== null ? (
@@ -231,15 +232,27 @@ function CustomerDetail() {
               </Form.Item>
               <Form.Item className="float-end">
                 <Button type="primary" className="bg-primary" htmlType="submit">
-                  <i className="fas fa-edit me-2"></i> Cập nhật
+                  <i className="fas fa-edit me-2"></i> CẬP NHẬT
                 </Button>
+                <Button
+                                type="default"
+                                style={{
+                                  backgroundColor: "#dc3545",
+                                  color: "white",
+                                  width: "150px",
+                                  height: "46px",
+                                }}
+                                onClick={() => navigate("/admin/customer")}
+                              >
+                                <i className="fas fa-arrow-left me-2"></i> QUAY LẠI
+                              </Button>
               </Form.Item>
             </Form>
           </Col>
           <Col span={16} style={{ borderLeft: "1px solid #F0F0F0" }} >
             <Row>
               <Col span={24}>
-                <h6>Thông tin địa chỉ</h6>
+                <h6>THÔNG TIN ĐỊA CHỈ</h6>
               </Col>  
             </Row>
             <Divider />

@@ -194,7 +194,7 @@ function Shoe() {
   return (
     <BaseUI>
       <div className="brand-container">
-        <h6 className="fw-semibold brand-title">Danh sách sản phẩm</h6>
+        <h6 className="fw-semibold brand-title">DANH SÁCH SẢN PHẨM</h6>
         <div className="card p-3 mb-3">
           <h6 className="fw-semibold">Bộ lọc</h6>
           <Row gutter={10}>
@@ -299,7 +299,7 @@ function Shoe() {
             <h6 className="fw-semibold">Bảng sản phẩm</h6>
             <Link to={"/admin/product/add"}>
               <Button type="primary" className="bg-primary w-100">
-                <i className="fas fa-plus-circle me-1"></i>THÊM CHI TIẾT SẢN PHẨM
+                THÊM CHI TIẾT SẢN PHẨM
               </Button>
             </Link>
           </div>

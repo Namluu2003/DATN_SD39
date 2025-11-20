@@ -261,7 +261,7 @@ function Collar() {
   return (
     <BaseUI>
       <div className="collar-container">
-        <h6 className="fw-semibold collar-title">Danh sách cổ áo</h6>
+        <h6 className="fw-semibold collar-title">DANH SÁCH CỔ ÁO</h6>
         <div className="card p-3 mb-3">
           <h6 className="fw-semibold">Bộ lọc</h6>
           <Row gutter={10}>
@@ -295,7 +295,7 @@ function Collar() {
                 onClick={showModalAdd}
                 className="bg-primary w-100"
               >
-                <i className="fas fa-plus-circle me-1"></i>THÊM CỔ ÁO
+                THÊM CỔ ÁO
               </Button>
             </Link>
           </div>
@@ -335,7 +335,7 @@ function Collar() {
               </Form.Item>
               <div className="d-flex justify-content-end">
                 <Button type="primary" htmlType="submit">
-                  <i className="fas fa-plus-circle me-1"></i> THÊM
+                 THÊM CỔ ÁO
                 </Button>
               </div>
             </Form>
@@ -359,7 +359,7 @@ function Collar() {
               </Form.Item>
               <div className="d-flex justify-content-end">
                 <Button type="primary" htmlType="submit">
-                  <i className="fas fa-plus-circle me-1"></i> Cập nhật
+                   Cập nhật
                 </Button>
               </div>
             </Form>

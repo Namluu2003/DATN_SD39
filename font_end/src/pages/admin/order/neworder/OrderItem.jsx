@@ -779,193 +779,195 @@ function OrderItem({ index, props, onSuccess }) {
   };
 
   return (
-  <div className="brand-container">
-    <div className="d-flex">
-      <div className="flex-grow-1">
-        <Title level={5}>Đơn hàng {props.code}</Title>
-      </div>
-      <div className="me-1">
-        <ShowProductModal
-          idBill={props.id}
-          onClose={() => {
-            loadListOrderDetail();
-            onSuccess();
-          }}
-        />
-      </div>
-      <div className="">
-        <QrCode title={"QR Code sản phẩm"} onQrSuccess={onSelect} />
-      </div>
-    </div>
-    <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}></div>
-    <Row gutter={16}>
-      <Col xl={14}>
-        <div
-          style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
-          className="my-3 p-2"
-        >
-          <Title level={5}>Giỏ hàng</Title>
-          {loading ? (
-            <Loading />
-          ) : (
-            <Table
-              dataSource={listOrderDetail}
-              columns={columns}
-              className="mt-3"
-              loading={loading}
-              style={{ width: "100%" }}
-              pagination={{
-                current: currentPage,
-                pageSize: pageSize,
-                showQuickJumper: true,
-                total: totalPages * pageSize,
-                onChange: (page, pageSize) => {
-                  setCurrentPage(page);
-                  setPageSize(pageSize);
-                },
-              }}
-            />
-          )}
+    <div className="brand-container">
+      <div className="d-flex">
+        <div className="flex-grow-1">
+          <Title level={5}>Đơn hàng {props.code}</Title>
         </div>
-      </Col>
-      <Col xl={10}>
-        <div
-          style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
-          className="my-3 p-2"
-        >
-          <div className="d-flex mb-2">
-            <div className="flex-grow-1">
-              <Title level={5}>Thông tin khách hàng</Title>
-            </div>
-            {customer !== null && (
-              <Button
-                className="me-1"
-                type="text"
-                onClick={() => handleDeleteCustomer()}
-              >
-                {customer?.name}
-                <Tooltip title="Xóa khách hàng">
-                  <i className="ms-1 fas fa-circle-xmark text-danger"></i>
-                </Tooltip>
-              </Button>
-            )}
-            <div className="">
-              <Button
-                type="primary"
-                onClick={() => setIsCustomerModalVisible(true)}
-              >
-                Chọn khách hàng
-              </Button>
-            </div>
-          </div>
-          <Divider className="m-0 mb-3" />
-          <Row gutter={10}>
-            <Col xl={24}>
-              <ul className="list-unstyled">
-                <li className="mb-2">
-                  Tên khách hàng:{" "}
-                  <span className="float-end fw-semibold">
-                    {customer === null ? "Khách hàng lẻ" : customer?.name}
-                  </span>
-                </li>
-                {customer !== null && (
-                  <>
-                    <li className="mb-2">
-                      Số điện thoại:{" "}
-                      <span className="float-end fw-semibold">
-                        {customer?.phoneNumber}
-                      </span>
-                    </li>
-                    <li className="mb-2">
-                      Email:{" "}
-                      <span className="float-end fw-semibold">
-                        {typeOrder === 1 && customer !== null
-                          ? customer?.email || "Chưa có"
-                          : autoFillAddress.email || "Chưa nhập"}
-                      </span>
-                    </li>
-                  </>
-                )}
-                {typeOrder === 1 && customer === null && (
-                  <>
-                    <li className="mb-2">
-                      Số điện thoại:{" "}
-                      <span className="float-end fw-semibold">
-                        {autoFillAddress.phoneNumber || "Chưa nhập"}
-                      </span>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </Col>
-          </Row>
+        <div className="me-1">
+          <ShowProductModal
+            idBill={props.id}
+            onClose={() => {
+              loadListOrderDetail();
+              onSuccess();
+            }}
+          />
         </div>
-        {typeOrder === 1 && (
+        <div className="">
+          <QrCode title={"QR CODE"} onQrSuccess={onSelect} />
+        </div>
+      </div>
+      <div
+        style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}
+      ></div>
+      <Row gutter={16}>
+        <Col xl={14}>
           <div
             style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
             className="my-3 p-2"
           >
-            <Title level={5}>Địa chỉ giao hàng</Title>
+            <Title level={5}>Giỏ hàng</Title>
+            {loading ? (
+              <Loading />
+            ) : (
+              <Table
+                dataSource={listOrderDetail}
+                columns={columns}
+                className="mt-3"
+                loading={loading}
+                style={{ width: "100%" }}
+                pagination={{
+                  current: currentPage,
+                  pageSize: pageSize,
+                  showQuickJumper: true,
+                  total: totalPages * pageSize,
+                  onChange: (page, pageSize) => {
+                    setCurrentPage(page);
+                    setPageSize(pageSize);
+                  },
+                }}
+              />
+            )}
+          </div>
+        </Col>
+        <Col xl={10}>
+          <div
+            style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
+            className="my-3 p-2"
+          >
+            <div className="d-flex mb-2">
+              <div className="flex-grow-1">
+                <Title level={5}>Thông tin khách hàng</Title>
+              </div>
+              {customer !== null && (
+                <Button
+                  className="me-1"
+                  type="text"
+                  onClick={() => handleDeleteCustomer()}
+                >
+                  {customer?.name}
+                  <Tooltip title="Xóa khách hàng">
+                    <i className="ms-1 fas fa-circle-xmark text-danger"></i>
+                  </Tooltip>
+                </Button>
+              )}
+              <div className="">
+                <Button
+                  type="primary"
+                  onClick={() => setIsCustomerModalVisible(true)}
+                >
+                  CHỌN KHÁCH HÀNG
+                </Button>
+              </div>
+            </div>
             <Divider className="m-0 mb-3" />
-            <Form
-              layout="vertical"
-              form={form}
-              onFinish={(data) => console.log(data)}
+            <Row gutter={10}>
+              <Col xl={24}>
+                <ul className="list-unstyled">
+                  <li className="mb-2">
+                    Tên khách hàng:{" "}
+                    <span className="float-end fw-semibold">
+                      {customer === null ? "Khách hàng lẻ" : customer?.name}
+                    </span>
+                  </li>
+                  {customer !== null && (
+                    <>
+                      <li className="mb-2">
+                        Số điện thoại:{" "}
+                        <span className="float-end fw-semibold">
+                          {customer?.phoneNumber}
+                        </span>
+                      </li>
+                      <li className="mb-2">
+                        Email:{" "}
+                        <span className="float-end fw-semibold">
+                          {typeOrder === 1 && customer !== null
+                            ? customer?.email || "Chưa có"
+                            : autoFillAddress.email || "Chưa nhập"}
+                        </span>
+                      </li>
+                    </>
+                  )}
+                  {typeOrder === 1 && customer === null && (
+                    <>
+                      <li className="mb-2">
+                        Số điện thoại:{" "}
+                        <span className="float-end fw-semibold">
+                          {autoFillAddress.phoneNumber || "Chưa nhập"}
+                        </span>
+                      </li>
+                    </>
+                  )}
+                </ul>
+              </Col>
+            </Row>
+          </div>
+          {typeOrder === 1 && (
+            <div
+              style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
+              className="my-3 p-2"
             >
-              <Row gutter={10}>
-                <Col xl={12}>
-                  <Form.Item
-                    label="Họ và tên"
-                    name="name"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Họ và tên không được để trống!",
-                      },
-                      {
-                        pattern: /^[A-Za-zÀ-Ỹà-ỹ\s]+$/,
-                        message: "Họ và tên không hợp lệ!",
-                      },
-                    ]}
-                  >
-                    <Input
-                      placeholder="Nhập họ và tên..."
-                      onChange={(e) =>
-                        setAutoFillAddress({
-                          ...autoFillAddress,
-                          name: e.target.value,
-                        })
-                      }
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xl={12}>
-                  <Form.Item
-                    label="Số điện thoại"
-                    name="phoneNumber"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Số điện thoại không được để trống!",
-                      },
-                      {
-                        pattern: /^(0[0-9]{9,10})$/,
-                        message: "Số điện thoại không hợp lệ!",
-                      },
-                    ]}
-                  >
-                    <Input
-                      placeholder="Nhập số điện thoại..."
-                      onChange={(e) =>
-                        setAutoFillAddress({
-                          ...autoFillAddress,
-                          phoneNumber: e.target.value,
-                        })
-                      }
-                    />
-                  </Form.Item>
-                </Col>
-                {/* <Col xl={12}>
+              <Title level={5}>Địa chỉ giao hàng</Title>
+              <Divider className="m-0 mb-3" />
+              <Form
+                layout="vertical"
+                form={form}
+                onFinish={(data) => console.log(data)}
+              >
+                <Row gutter={10}>
+                  <Col xl={12}>
+                    <Form.Item
+                      label="Họ và tên"
+                      name="name"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Họ và tên không được để trống!",
+                        },
+                        {
+                          pattern: /^[A-Za-zÀ-Ỹà-ỹ\s]+$/,
+                          message: "Họ và tên không hợp lệ!",
+                        },
+                      ]}
+                    >
+                      <Input
+                        placeholder="Nhập họ và tên..."
+                        onChange={(e) =>
+                          setAutoFillAddress({
+                            ...autoFillAddress,
+                            name: e.target.value,
+                          })
+                        }
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col xl={12}>
+                    <Form.Item
+                      label="Số điện thoại"
+                      name="phoneNumber"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Số điện thoại không được để trống!",
+                        },
+                        {
+                          pattern: /^(0[0-9]{9,10})$/,
+                          message: "Số điện thoại không hợp lệ!",
+                        },
+                      ]}
+                    >
+                      <Input
+                        placeholder="Nhập số điện thoại..."
+                        onChange={(e) =>
+                          setAutoFillAddress({
+                            ...autoFillAddress,
+                            phoneNumber: e.target.value,
+                          })
+                        }
+                      />
+                    </Form.Item>
+                  </Col>
+                  {/* <Col xl={12}>
                   <Form.Item
                     label="Email"
                     name="email"
@@ -984,570 +986,625 @@ function OrderItem({ index, props, onSuccess }) {
                     />
                   </Form.Item>
                 </Col> */}
-                <GHNInfo
-                  distr={autoFillAddress.district}
-                  dataAddress={(data) =>
-                    setAutoFillAddress({ ...autoFillAddress, ...data })
-                  }
-                  prov={autoFillAddress.province}
-                  war={autoFillAddress.ward}
-                />
-                <Col xl={18}>
-                  <Form.Item label="Địa chỉ cụ thể" name={"specificAddress"}>
-                    <Input
-                      placeholder="Nhập địa chỉ cụ thể ..."
-                      onChange={(e) =>
-                        setAutoFillAddress({
-                          ...autoFillAddress,
-                          specificAddress: e.target.value,
-                        })
-                      }
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xl={6}>
-                  <img
-                    src="https://donhang.ghn.vn/static/media/Giao_Hang_Nhanh_Toan_Quoc_color.b7d18fe5.png"
-                    alt=""
-                    width={"100%"}
+                  <GHNInfo
+                    distr={autoFillAddress.district}
+                    dataAddress={(data) =>
+                      setAutoFillAddress({ ...autoFillAddress, ...data })
+                    }
+                    prov={autoFillAddress.province}
+                    war={autoFillAddress.ward}
                   />
-                </Col>
-              </Row>
-            </Form>
-          </div>
-        )}
-        <div
-          style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
-          className="my-3 p-2"
-        >
-          <div className="d-flex">
-            <div className="flex-grow-1">
-              <Title level={5}>Thông tin thanh toán</Title>
+                  <Col xl={18}>
+                    <Form.Item label="Địa chỉ cụ thể" name={"specificAddress"}>
+                      <Input
+                        placeholder="Nhập địa chỉ cụ thể ..."
+                        onChange={(e) =>
+                          setAutoFillAddress({
+                            ...autoFillAddress,
+                            specificAddress: e.target.value,
+                          })
+                        }
+                      />
+                    </Form.Item>
+                  </Col>
+                  <Col xl={6}>
+                    <img
+                      src="https://donhang.ghn.vn/static/media/Giao_Hang_Nhanh_Toan_Quoc_color.b7d18fe5.png"
+                      alt=""
+                      width={"100%"}
+                    />
+                  </Col>
+                </Row>
+              </Form>
             </div>
-            <div className="">
-              {customer !== null && (
-                <ChooseAddress
-                  idCustomer={customer.id}
-                  onSuccess={(address) => setAutoFillAddress(address)}
-                />
-              )}
+          )}
+          <div
+            style={{ boxShadow: "2px 2px 4px 4px rgba(0, 0, 0, 0.03)" }}
+            className="my-3 p-2"
+          >
+            <div className="d-flex">
+              <div className="flex-grow-1">
+                <Title level={5}>Thông tin thanh toán</Title>
+              </div>
+              <div className="">
+                {customer !== null && (
+                  <ChooseAddress
+                    idCustomer={customer.id}
+                    onSuccess={(address) => setAutoFillAddress(address)}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-          <Divider className="m-0 mb-3" />
-          <ul className="list-unstyled">
-            <li className="mb-2">
-              <Switch
-                onChange={(value) => {
-                  setTypeOrder(value ? 1 : 0);
-                  if (!value) {
-                    setPayOnDelivery(false);
-                    setWaitPay(false);
-                  }
-                }}
-              />{" "}
-              Giao hàng
-            </li>
-            {typeOrder === 1 && (
+            <Divider className="m-0 mb-3" />
+            <ul className="list-unstyled">
               <li className="mb-2">
                 <Switch
-                  checked={payOnDelivery}
                   onChange={(value) => {
-                    setPayOnDelivery(value);
-                    setWaitPay(value);
+                    setTypeOrder(value ? 1 : 0);
+                    if (!value) {
+                      setPayOnDelivery(false);
+                      setWaitPay(false);
+                    }
                   }}
                 />{" "}
-                Thanh toán khi nhận hàng
+                Giao hàng
               </li>
-            )}
-            <Row gutter={10}>
-              <ChooseVoucher
-                onSelectVoucher={(selectedVoucher) =>
-                  setVoucher(selectedVoucher)
-                }
-                customerId={customer?.id}
-                orderTotal={totalMoney}
-                selectedVoucherId={voucher?.id}
-              />
-            </Row>
-            <li className="mb-2">
-              Tiền hàng:{" "}
-              <span className="float-end fw-semibold">
-                <FormatCurrency value={totalMoney} />
-              </span>
-            </li>
-            {typeOrder === 1 && (
-              <li className="mb-2">
-                Phí vận chuyển:
-                <span
-                  className="float-end fw-semibold"
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <div
-                    style={{
-                      position: "relative",
-                      display: "inline-block",
+              {typeOrder === 1 && (
+                <li className="mb-2">
+                  <Switch
+                    checked={payOnDelivery}
+                    onChange={(value) => {
+                      setPayOnDelivery(value);
+                      setWaitPay(value);
                     }}
-                  >
-                    <input
-                      type="text"
-                      value={formatInputValue(feeShip)}
-                      onChange={handleChange}
-                      style={{
-                        width: "120px",
-                        height: "30px",
-                        textAlign: "right",
-                        paddingRight: "20px",
-                        border: "1px solid #ccc",
-                        borderRadius: "5px",
-                        fontSize: "14px",
-                      }}
-                    />
-                  </div>
+                  />{" "}
+                  Thanh toán khi nhận hàng
+                </li>
+              )}
+              <Row gutter={10}>
+                <ChooseVoucher
+                  onSelectVoucher={(selectedVoucher) =>
+                    setVoucher(selectedVoucher)
+                  }
+                  customerId={customer?.id}
+                  orderTotal={totalMoney}
+                  selectedVoucherId={voucher?.id}
+                />
+              </Row>
+              <li className="mb-2">
+                Tiền hàng:{" "}
+                <span className="float-end fw-semibold">
+                  <FormatCurrency value={totalMoney} />
                 </span>
               </li>
-            )}
-            <li className="mb-2">
-              Giảm giá:{" "}
-              <span className="float-end fw-semibold">
-                <FormatCurrency value={moneyReduce} />
-              </span>
-            </li>
-            {voucher !== null && (
-              <li className="mb-2">
-                <Tooltip title="Nhấn để bỏ chọn voucher">
-                  <Alert
-                    message={
-                      <>
-                        Áp dụng "{voucher?.name}" ({voucher.percentReduce}%)
-                        <span
-                          className="float-end text-danger"
-                          onClick={() => {
-                            setVoucher(null);
-                            setMoneyReduce(0);
-                          }}
-                          style={{ cursor: "pointer" }}
-                        >
-                          <i className="fas fa-xmark-circle"></i>
-                        </span>
-                      </>
-                    }
-                    type="success"
-                  />
-                </Tooltip>
-              </li>
-            )}
-            <li className="mb-2">
-              Tổng tiền:{" "}
-              <span className="float-end fw-semibold text-danger">
-                <FormatCurrency
-                  value={
-                    totalMoney -
-                    moneyReduce +
-                    (typeOrder === 1 ? getFinalShippingFee() : 0)
-                  }
-                />
-              </span>
-            </li>
-            {!payOnDelivery && (
-              <>
-                {paymentMethod === 0 ? (
-                  <>
-                    <li className="mb-2">
-                      <Input
-                        placeholder={
-                          typeOrder === 0
-                            ? "Nhập tiền khách đưa..."
-                            : "Nhập tiền khách đưa (nếu thanh toán tại quầy)..."
-                        }
-                        onChange={(e) => {
-                          const value = e.target.value.replace(/[^0-9]/g, "");
-                          setTienKhachDua(value ? Number(value) : null);
+              {typeOrder === 1 && (
+                <li className="mb-2">
+                  Phí vận chuyển:
+                  <span
+                    className="float-end fw-semibold"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <div
+                      style={{
+                        position: "relative",
+                        display: "inline-block",
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={formatInputValue(feeShip)}
+                        onChange={handleChange}
+                        style={{
+                          width: "120px",
+                          height: "30px",
+                          textAlign: "right",
+                          paddingRight: "20px",
+                          border: "1px solid #ccc",
+                          borderRadius: "5px",
+                          fontSize: "14px",
                         }}
-                        value={
-                          tienKhachDua
-                            ? numeral(tienKhachDua).format("0,0")
-                            : ""
-                        }
-                        className="mb-2"
                       />
-                    </li>
-                    <li className="mb-2">
-                      {typeOrder === 0 ? (
-                        tienKhachDua === null || tienKhachDua <= 0 ? (
-                          <Alert
-                            message="Vui lòng nhập số tiền khách đưa!"
-                            type="warning"
-                            showIcon
-                          />
-                        ) : tienKhachDua <
-                          totalMoney -
-                            moneyReduce +
-                            (typeOrder === 1 ? getFinalShippingFee() : 0) ? (
-                          <Alert
-                            message={`Vui lòng nhập đủ số tiền (${FormatCurrency(
-                              {
-                                value:
-                                  totalMoney -
-                                  moneyReduce +
-                                  (typeOrder === 1
-                                    ? getFinalShippingFee()
-                                    : 0),
-                              }
-                            )})!`}
-                            type="error"
-                            showIcon
-                          />
-                        ) : (
-                          <Alert
-                            message="Đã nhập đủ số tiền!"
-                            type="success"
-                            showIcon
-                          />
-                        )
-                      ) : (
-                        tienKhachDua !== null &&
-                        tienKhachDua > 0 &&
-                        (tienKhachDua <
-                        totalMoney -
-                          moneyReduce +
-                          (typeOrder === 1 ? getFinalShippingFee() : 0) ? (
-                          <Alert
-                            message={`Vui lòng nhập đủ số tiền (${FormatCurrency(
-                              {
-                                value:
-                                  totalMoney -
-                                  moneyReduce +
-                                  (typeOrder === 1
-                                    ? getFinalShippingFee()
-                                    : 0),
-                              }
-                            )})!`}
-                            type="error"
-                            showIcon
-                          />
-                        ) : (
-                          <Alert
-                            message="Đã nhập đủ số tiền!"
-                            type="success"
-                            showIcon
-                          />
-                        ))
-                      )}
-                    </li>
-                    {tienKhachDua > 0 && (
+                    </div>
+                  </span>
+                </li>
+              )}
+              <li className="mb-2">
+                Giảm giá:{" "}
+                <span className="float-end fw-semibold">
+                  <FormatCurrency value={moneyReduce} />
+                </span>
+              </li>
+              {voucher !== null && (
+                <li className="mb-2">
+                  <Tooltip title="Nhấn để bỏ chọn voucher">
+                    <div
+                      style={{
+                        border: "2px solid #28a745", // viền xanh success
+                        borderRadius: "8px",
+                        padding: "10px 15px",
+                        backgroundColor: "#d4edda", // nền xanh nhạt
+                        color: "#155724",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                        cursor: "default",
+                      }}
+                    >
+                      <span>
+                        Đã áp dụng phiếu giảm giá "{voucher?.name}" ({voucher.percentReduce}%)
+                      </span>
+                      <span
+                        style={{
+                          color: "#dc3545",
+                          cursor: "pointer",
+                          marginLeft: "10px",
+                          fontSize: "16px",
+                        }}
+                        onClick={() => {
+                          setVoucher(null);
+                          setMoneyReduce(0);
+                        }}
+                      >
+                        <i className="fas fa-xmark-circle"></i>
+                      </span>
+                    </div>
+                  </Tooltip>
+                </li>
+              )}
+
+              <li className="mb-2">
+                Tổng tiền:{" "}
+                <span className="float-end fw-semibold text-danger">
+                  <FormatCurrency
+                    value={
+                      totalMoney -
+                      moneyReduce +
+                      (typeOrder === 1 ? getFinalShippingFee() : 0)
+                    }
+                  />
+                </span>
+              </li>
+              {!payOnDelivery && (
+                <>
+                  {paymentMethod === 0 ? (
+                    <>
                       <li className="mb-2">
-                        Tiền thừa:{" "}
-                        <span className="float-end fw-semibold text-danger">
-                          <FormatCurrency
-                            value={
-                              extraMoney < 0 || extraMoney === null
-                                ? 0
-                                : extraMoney
-                            }
-                          />
-                        </span>
+                        <Input
+                          placeholder={
+                            typeOrder === 0
+                              ? "Nhập tiền khách đưa..."
+                              : "Nhập tiền khách đưa (nếu thanh toán tại quầy)..."
+                          }
+                          onChange={(e) => {
+                            const value = e.target.value.replace(/[^0-9]/g, "");
+                            setTienKhachDua(value ? Number(value) : null);
+                          }}
+                          value={
+                            tienKhachDua
+                              ? numeral(tienKhachDua).format("0,0")
+                              : ""
+                          }
+                          className="mb-2"
+                        />
                       </li>
-                    )}
-                  </>
-                ) : paymentMethod === 1 ? (
-                  <>
-                    <li className="mb-2">
-                      <Form layout="vertical">
-                        <Form.Item
-                          label="Mã giao dịch"
-                          name="tradingCode" // Add name for form validation
-                          rules={[
-                            {
-                              required: true,
-                              message: "Vui lòng nhập mã giao dịch",
-                            },
-                            {
-                              pattern: /^\d{10}$/,
-                              message: "Mã giao dịch phải gồm 10 chữ số",
-                            },
-                          ]}
-                        >
-                          <Input
-                            placeholder="Mã giao dịch..."
-                            value={tradingCode}
-                            onChange={(e) => setTradingCode(e.target.value)}
-                            maxLength={10} // Restrict input to 10 characters in UI
-                          />
-                        </Form.Item>
-                        <Form.Item
-                          label="Số tiền chuyển khoản"
-                          name="tienChuyenKhoan"
-                          rules={[
-                            {
-                              required: true,
-                              message: "Vui lòng nhập số tiền chuyển khoản",
-                            },
-                          ]}
-                        >
-                          <Input
-                            placeholder="Nhập số tiền khách chuyển khoản..."
-                            onChange={(e) => {
-                              const value = e.target.value.replace(
-                                /[^0-9]/g,
-                                ""
-                              );
-                              setTienChuyenKhoan(
-                                value ? Number(value) : null
-                              );
-                            }}
-                            value={
-                              tienChuyenKhoan
-                                ? numeral(tienChuyenKhoan).format("0,0")
-                                : ""
-                            }
-                          />
-                        </Form.Item>
-                        {/* <Form.Item label="Ghi chú">
+                      <li className="mb-2">
+  {typeOrder === 0 ? (
+    tienKhachDua === null || tienKhachDua <= 0 ? (
+      <div
+        style={{
+          border: "2px solid #ffc107", // vàng cho cảnh báo
+          borderRadius: "5px",
+          padding: "6px 10px",
+          display: "inline-block",
+          backgroundColor: "#fff3cd",
+          color: "#856404",
+        }}
+      >
+        Vui lòng nhập số tiền khách đưa!
+      </div>
+    ) : tienKhachDua <
+      totalMoney - moneyReduce + (typeOrder === 1 ? getFinalShippingFee() : 0) ? (
+      <div
+        style={{
+          border: "2px solid #f5c6cb", // đỏ cho lỗi
+          borderRadius: "5px",
+          padding: "6px 10px",
+          display: "inline-block",
+          backgroundColor: "#f8d7da",
+          color: "#721c24",
+        }}
+      >
+        Vui lòng nhập đủ số tiền (
+        {FormatCurrency({
+          value:
+            totalMoney - moneyReduce + (typeOrder === 1 ? getFinalShippingFee() : 0),
+        })}
+        )!
+      </div>
+    ) : (
+      <div
+        style={{
+          border: "2px solid #c3e6cb", // xanh cho thành công
+          borderRadius: "5px",
+          padding: "6px 10px",
+          display: "inline-block",
+          backgroundColor: "#d4edda",
+          color: "#155724",
+        }}
+      >
+        Đã nhập đủ số tiền!
+      </div>
+    )
+  ) : (
+    tienKhachDua !== null &&
+    tienKhachDua > 0 &&
+    (tienKhachDua <
+    totalMoney - moneyReduce + (typeOrder === 1 ? getFinalShippingFee() : 0) ? (
+      <div
+        style={{
+          border: "2px solid #f5c6cb",
+          borderRadius: "5px",
+          padding: "6px 10px",
+          display: "inline-block",
+          backgroundColor: "#f8d7da",
+          color: "#721c24",
+        }}
+      >
+        Vui lòng nhập đủ số tiền (
+        {FormatCurrency({
+          value:
+            totalMoney - moneyReduce + (typeOrder === 1 ? getFinalShippingFee() : 0),
+        })}
+        )!
+      </div>
+    ) : (
+      <div
+        style={{
+          border: "2px solid #c3e6cb",
+          borderRadius: "5px",
+          padding: "6px 10px",
+          display: "inline-block",
+          backgroundColor: "#d4edda",
+          color: "#155724",
+        }}
+      >
+        Đã nhập đủ số tiền!
+      </div>
+    ))
+  )}
+</li>
+
+                      {tienKhachDua > 0 && (
+                        <li className="mb-2">
+                          Tiền thừa:{" "}
+                          <span className="float-end fw-semibold text-danger">
+                            <FormatCurrency
+                              value={
+                                extraMoney < 0 || extraMoney === null
+                                  ? 0
+                                  : extraMoney
+                              }
+                            />
+                          </span>
+                        </li>
+                      )}
+                    </>
+                  ) : paymentMethod === 1 ? (
+                    <>
+                      <li className="mb-2">
+                        <Form layout="vertical">
+                          <Form.Item
+                            label="Mã giao dịch"
+                            name="tradingCode" // Add name for form validation
+                            rules={[
+                              {
+                                required: true,
+                                message: "Vui lòng nhập mã giao dịch",
+                              },
+                              {
+                                pattern: /^\d{10}$/,
+                                message: "Mã giao dịch phải gồm 10 chữ số",
+                              },
+                            ]}
+                          >
+                            <Input
+                              placeholder="Mã giao dịch..."
+                              value={tradingCode}
+                              onChange={(e) => setTradingCode(e.target.value)}
+                              maxLength={10} // Restrict input to 10 characters in UI
+                            />
+                          </Form.Item>
+                          <Form.Item
+                            label="Số tiền chuyển khoản"
+                            name="tienChuyenKhoan"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Vui lòng nhập số tiền chuyển khoản",
+                              },
+                            ]}
+                          >
+                            <Input
+                              placeholder="Nhập số tiền khách chuyển khoản..."
+                              onChange={(e) => {
+                                const value = e.target.value.replace(
+                                  /[^0-9]/g,
+                                  ""
+                                );
+                                setTienChuyenKhoan(
+                                  value ? Number(value) : null
+                                );
+                              }}
+                              value={
+                                tienChuyenKhoan
+                                  ? numeral(tienChuyenKhoan).format("0,0")
+                                  : ""
+                              }
+                            />
+                          </Form.Item>
+                          {/* <Form.Item label="Ghi chú">
                           <TextArea
                             placeholder="Nhập ghi chú (nếu có)..."
                             onChange={(e) => setNote(e.target.value)}
                           />
                         </Form.Item> */}
-                      </Form>
-                    </li>
-                    <li className="mb-2 text-center">
-                      {/* <Button
+                        </Form>
+                      </li>
+                      <li className="mb-2 text-center">
+                        {/* <Button
                         type="primary"
                         onClick={() => setShowQrCode(!showQrCode)}
                       >
                         {showQrCode ? "Ẩn mã QR" : "Hiển thị mã QR"}
                       </Button> */}
-                    </li>
-                    {showQrCode && (
-                      <li className="mb-2">
-                        <div
-                          style={{
-                            border: "1px solid #e8e8e8",
-                            padding: "15px",
-                            borderRadius: "8px",
-                            backgroundColor: "#f9f9f9",
-                          }}
-                        >
-                          <div className="text-center mb-3">
-                            <img
-                              src={generateQrCodeUrl()}
-                              alt="QR Code Thanh toán"
-                              style={{
-                                width: "200px",
-                                height: "200px",
-                                objectFit: "contain",
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <p>
-                              <strong>Ngân hàng:</strong> Ngân hàng thương mại
-                              cổ phần Quân đội (MB Bank)
-                            </p>
-                            <p>
-                              <strong>Số tài khoản:</strong>{" "}
-                              {bankInfo.accountNumber}
-                            </p>
-                            <p>
-                              <strong>Chủ tài khoản:</strong>{" "}
-                              {bankInfo.accountHolder}
-                            </p>
-                            {/* <p>
+                      </li>
+                      {showQrCode && (
+                        <li className="mb-2">
+                          <div
+                            style={{
+                              border: "1px solid #e8e8e8",
+                              padding: "15px",
+                              borderRadius: "8px",
+                              backgroundColor: "#f9f9f9",
+                            }}
+                          >
+                            <div className="text-center mb-3">
+                              <img
+                                src={generateQrCodeUrl()}
+                                alt="QR Code Thanh toán"
+                                style={{
+                                  width: "200px",
+                                  height: "200px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </div>
+                            <div>
+                              <p>
+                                <strong>Ngân hàng:</strong> Ngân hàng thương mại
+                                cổ phần Quân đội (MB Bank)
+                              </p>
+                              <p>
+                                <strong>Số tài khoản:</strong>{" "}
+                                {bankInfo.accountNumber}
+                              </p>
+                              <p>
+                                <strong>Chủ tài khoản:</strong>{" "}
+                                {bankInfo.accountHolder}
+                              </p>
+                              {/* <p>
                               <strong>Số tiền:</strong>{" "}
                               <FormatCurrency value={tienChuyenKhoan || 0} />
                             </p> */}
-                            <p>
-                              <strong>Số tiền:</strong>{" "}
-                              <FormatCurrency
-                                value={
+                              <p>
+                                <strong>Số tiền:</strong>{" "}
+                                <FormatCurrency
+                                  value={
+                                    totalMoney -
+                                    moneyReduce +
+                                    (typeOrder === 1
+                                      ? getFinalShippingFee()
+                                      : 0)
+                                  }
+                                />
+                              </p>
+                              <p>
+                                <strong>Nội dung chuyển khoản:</strong> Thanh
+                                toán đơn hàng {props.code}
+                              </p>
+                            </div>
+                          </div>
+                        </li>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <li className="mb-2">
+                        <Form layout="vertical">
+                          <Form.Item label="Tiền mặt">
+                            <Input
+                              placeholder="Nhập số tiền khách đưa bằng tiền mặt..."
+                              onChange={(e) => {
+                                const totalToPay =
                                   totalMoney -
                                   moneyReduce +
-                                  (typeOrder === 1
-                                    ? getFinalShippingFee()
-                                    : 0)
-                                }
-                              />
-                            </p>
-                            <p>
-                              <strong>Nội dung chuyển khoản:</strong> Thanh
-                              toán đơn hàng {props.code}
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <li className="mb-2">
-                      <Form layout="vertical">
-                        <Form.Item label="Tiền mặt">
-                          <Input
-                            placeholder="Nhập số tiền khách đưa bằng tiền mặt..."
-                            onChange={(e) => {
-                              const totalToPay =
-                                totalMoney -
-                                moneyReduce +
-                                (typeOrder === 1 ? getFinalShippingFee() : 0);
-                              const value = e.target.value.replace(
-                                /[^0-9]/g,
-                                ""
-                              );
-                              const cash = value ? Number(value) : null;
-                              setTienKhachDua(cash);
-                              const remaining = totalToPay - (cash || 0);
-                              setTienChuyenKhoan(
-                                remaining > 0 ? remaining : null
-                              );
-                            }}
-                            value={
-                              tienKhachDua
-                                ? numeral(tienKhachDua).format("0,0")
-                                : ""
-                            }
-                          />
-                        </Form.Item>
-                        <Form.Item label="Tiền chuyển khoản">
-                          <Input
-                            placeholder="Nhập số tiền khách chuyển khoản..."
-                            onChange={(e) => {
-                              const totalToPay =
-                                totalMoney -
-                                moneyReduce +
-                                (typeOrder === 1 ? getFinalShippingFee() : 0);
-                              const value = e.target.value.replace(
-                                /[^0-9]/g,
-                                ""
-                              );
-                              const transfer = value ? Number(value) : null;
-                              setTienChuyenKhoan(transfer);
-                              const remaining = totalToPay - (transfer || 0);
-                              setTienKhachDua(
-                                remaining > 0 ? remaining : null
-                              );
-                            }}
-                            value={
-                              tienChuyenKhoan
-                                ? numeral(tienChuyenKhoan).format("0,0")
-                                : ""
-                            }
-                          />
-                        </Form.Item>
-                        <Form.Item label="Mã giao dịch" required>
-                          <Input
-                            placeholder="Mã giao dịch cho phần chuyển khoản..."
-                            value={tradingCode}
-                            onChange={(e) => setTradingCode(e.target.value)}
-                          />
-                        </Form.Item>
-                        {/* <Form.Item label="Ghi chú">
+                                  (typeOrder === 1 ? getFinalShippingFee() : 0);
+                                const value = e.target.value.replace(
+                                  /[^0-9]/g,
+                                  ""
+                                );
+                                const cash = value ? Number(value) : null;
+                                setTienKhachDua(cash);
+                                const remaining = totalToPay - (cash || 0);
+                                setTienChuyenKhoan(
+                                  remaining > 0 ? remaining : null
+                                );
+                              }}
+                              value={
+                                tienKhachDua
+                                  ? numeral(tienKhachDua).format("0,0")
+                                  : ""
+                              }
+                            />
+                          </Form.Item>
+                          <Form.Item label="Tiền chuyển khoản">
+                            <Input
+                              placeholder="Nhập số tiền khách chuyển khoản..."
+                              onChange={(e) => {
+                                const totalToPay =
+                                  totalMoney -
+                                  moneyReduce +
+                                  (typeOrder === 1 ? getFinalShippingFee() : 0);
+                                const value = e.target.value.replace(
+                                  /[^0-9]/g,
+                                  ""
+                                );
+                                const transfer = value ? Number(value) : null;
+                                setTienChuyenKhoan(transfer);
+                                const remaining = totalToPay - (transfer || 0);
+                                setTienKhachDua(
+                                  remaining > 0 ? remaining : null
+                                );
+                              }}
+                              value={
+                                tienChuyenKhoan
+                                  ? numeral(tienChuyenKhoan).format("0,0")
+                                  : ""
+                              }
+                            />
+                          </Form.Item>
+                          <Form.Item label="Mã giao dịch" required>
+                            <Input
+                              placeholder="Mã giao dịch cho phần chuyển khoản..."
+                              value={tradingCode}
+                              onChange={(e) => setTradingCode(e.target.value)}
+                            />
+                          </Form.Item>
+                          {/* <Form.Item label="Ghi chú">
                           <TextArea
                             placeholder="Nhập ghi chú (nếu có)..."
                             onChange={(e) => setNote(e.target.value)}
                           />
                         </Form.Item> */}
-                      </Form>
-                    </li>
-                    <li className="mb-2">
-                      {tienKhachDua === null && tienChuyenKhoan === null ? (
-                        <Alert
-                          message="Vui lòng nhập ít nhất một hình thức thanh toán!"
-                          type="warning"
-                          showIcon
-                        />
-                      ) : (tienKhachDua || 0) + (tienChuyenKhoan || 0) <
-                        totalMoney -
-                          moneyReduce +
-                          (typeOrder === 1 ? getFinalShippingFee() : 0) ? (
-                        <Alert
-                          message={`Vui lòng nhập đủ số tiền (${FormatCurrency(
-                            {
-                              value:
-                                totalMoney -
-                                moneyReduce +
-                                (typeOrder === 1 ? getFinalShippingFee() : 0),
-                            }
-                          )})! Còn thiếu ${FormatCurrency({
-                            value:
-                              totalMoney -
-                              moneyReduce +
-                              (typeOrder === 1 ? getFinalShippingFee() : 0) -
-                              ((tienKhachDua || 0) + (tienChuyenKhoan || 0)),
-                          })}`}
-                          type="error"
-                          showIcon
-                        />
-                      ) : (
-                        <Alert
-                          message="Đã nhập đủ số tiền!"
-                          type="success"
-                          showIcon
-                        />
-                      )}
-                    </li>
-                    {(tienKhachDua || tienChuyenKhoan) && (
-                      <li className="mb-2">
-                        Tiền thừa:{" "}
-                        <span className="float-end fw-semibold text-danger">
-                          <FormatCurrency
-                            value={
-                              extraMoney < 0 || extraMoney === null
-                                ? 0
-                                : extraMoney
-                            }
-                          />
-                        </span>
+                        </Form>
                       </li>
-                    )}
-                    {showQrCode && (
                       <li className="mb-2">
-                        <div
-                          style={{
-                            border: "1px solid #e8e8e8",
-                            padding: "15px",
-                            borderRadius: "8px",
-                            backgroundColor: "#f9f9f9",
-                          }}
-                        >
-                          <div className="text-center mb-3">
-                            <img
-                              src={generateQrCodeUrl()}
-                              alt="QR Code Thanh toán"
-                              style={{
-                                width: "200px",
-                                height: "200px",
-                                objectFit: "contain",
-                              }}
+  {tienKhachDua === null && tienChuyenKhoan === null ? (
+    <div
+      style={{
+        border: "2px solid #ffc107", // vàng cảnh báo
+        borderRadius: "5px",
+        padding: "6px 10px",
+        display: "inline-block",
+        backgroundColor: "#fff3cd",
+        color: "#856404",
+      }}
+    >
+      Vui lòng nhập ít nhất một hình thức thanh toán!
+    </div>
+  ) : (tienKhachDua || 0) + (tienChuyenKhoan || 0) <
+    totalMoney - moneyReduce + (typeOrder === 1 ? getFinalShippingFee() : 0) ? (
+    <div
+      style={{
+        border: "2px solid #f5c6cb", // đỏ lỗi
+        borderRadius: "5px",
+        padding: "6px 10px",
+        display: "inline-block",
+        backgroundColor: "#f8d7da",
+        color: "#721c24",
+      }}
+    >
+      {`Vui lòng nhập đủ số tiền (${FormatCurrency({
+        value:
+          totalMoney - moneyReduce + (typeOrder === 1 ? getFinalShippingFee() : 0),
+      })})! Còn thiếu ${FormatCurrency({
+        value:
+          totalMoney -
+          moneyReduce +
+          (typeOrder === 1 ? getFinalShippingFee() : 0) -
+          ((tienKhachDua || 0) + (tienChuyenKhoan || 0)),
+      })}`}
+    </div>
+  ) : (
+    <div
+      style={{
+        border: "2px solid #c3e6cb", // xanh thành công
+        borderRadius: "5px",
+        padding: "6px 10px",
+        display: "inline-block",
+        backgroundColor: "#d4edda",
+        color: "#155724",
+      }}
+    >
+      Đã nhập đủ số tiền!
+    </div>
+  )}
+</li>
+
+                      {(tienKhachDua || tienChuyenKhoan) && (
+                        <li className="mb-2">
+                          Tiền thừa:{" "}
+                          <span className="float-end fw-semibold text-danger">
+                            <FormatCurrency
+                              value={
+                                extraMoney < 0 || extraMoney === null
+                                  ? 0
+                                  : extraMoney
+                              }
                             />
+                          </span>
+                        </li>
+                      )}
+                      {showQrCode && (
+                        <li className="mb-2">
+                          <div
+                            style={{
+                              border: "1px solid #e8e8e8",
+                              padding: "15px",
+                              borderRadius: "8px",
+                              backgroundColor: "#f9f9f9",
+                            }}
+                          >
+                            <div className="text-center mb-3">
+                              <img
+                                src={generateQrCodeUrl()}
+                                alt="QR Code Thanh toán"
+                                style={{
+                                  width: "200px",
+                                  height: "200px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            </div>
+                            <div>
+                              <p>
+                                <strong>Ngân hàng:</strong> Ngân hàng thương mại
+                                cổ phần Quân đội (MB Bank)
+                              </p>
+                              <p>
+                                <strong>Số tài khoản:</strong>{" "}
+                                {bankInfo.accountNumber}
+                              </p>
+                              <p>
+                                <strong>Chủ tài khoản:</strong>{" "}
+                                {bankInfo.accountHolder}
+                              </p>
+                              <p>
+                                <strong>Số tiền chuyển khoản:</strong>{" "}
+                                <FormatCurrency value={tienChuyenKhoan || 0} />
+                              </p>
+                              <p>
+                                <strong>Nội dung chuyển khoản:</strong> Thanh
+                                toán đơn hàng {props.code}
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <p>
-                              <strong>Ngân hàng:</strong> Ngân hàng thương mại
-                              cổ phần Quân đội (MB Bank)
-                            </p>
-                            <p>
-                              <strong>Số tài khoản:</strong>{" "}
-                              {bankInfo.accountNumber}
-                            </p>
-                            <p>
-                              <strong>Chủ tài khoản:</strong>{" "}
-                              {bankInfo.accountHolder}
-                            </p>
-                            <p>
-                              <strong>Số tiền chuyển khoản:</strong>{" "}
-                              <FormatCurrency value={tienChuyenKhoan || 0} />
-                            </p>
-                            <p>
-                              <strong>Nội dung chuyển khoản:</strong> Thanh
-                              toán đơn hàng {props.code}
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                    )}
-                  </>
-                )}
-                {/* <li className="mb-2">Phương thức thanh toán:</li>
+                        </li>
+                      )}
+                    </>
+                  )}
+                  {/* <li className="mb-2">Phương thức thanh toán:</li>
                 <li className="mb-2 text-center">
                   <Row gutter={10}>
                     <Col xl={12} onClick={() => setPaymentMethod(0)}>
@@ -1591,98 +1648,98 @@ function OrderItem({ index, props, onSuccess }) {
                     </Col>
                   </Row>
                 </li> */}
-                <li className="mb-2">Phương thức thanh toán:</li>
-                <li className="mb-3 text-center">
-                  <div
-                    className="custom-select-wrapper"
-                    style={{
-                      position: "relative",
-                      maxWidth: "600px",
-                      margin: "0 auto",
-                      fontSize: "16px",
-                    }}
-                  >
-                    <select
-                      className="form-select fw-semibold"
-                      value={paymentMethod}
-                      onChange={(e) =>
-                        setPaymentMethod(Number(e.target.value))
-                      }
+                  <li className="mb-2">Phương thức thanh toán:</li>
+                  <li className="mb-3 text-center">
+                    <div
+                      className="custom-select-wrapper"
                       style={{
-                        padding: "10px 40px 10px 40px",
-                        borderRadius: "8px",
-                        border: "1px solid #d9d9d9",
-                        backgroundColor: "#fff",
-                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                        appearance: "none",
-                        backgroundImage:
-                          'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>\')',
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "right 10px center",
+                        position: "relative",
+                        maxWidth: "600px",
+                        margin: "0 auto",
+                        fontSize: "16px",
                       }}
                     >
-                      <option
-                        value={0}
-                        data-icon="fas fa-money-bill-wave text-success"
+                      <select
+                        className="form-select fw-semibold"
+                        value={paymentMethod}
+                        onChange={(e) =>
+                          setPaymentMethod(Number(e.target.value))
+                        }
+                        style={{
+                          padding: "10px 40px 10px 40px",
+                          borderRadius: "8px",
+                          border: "1px solid #d9d9d9",
+                          backgroundColor: "#fff",
+                          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                          appearance: "none",
+                          backgroundImage:
+                            'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>\')',
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 10px center",
+                        }}
                       >
-                        Tiền mặt
-                      </option>
-                      <option
-                        value={1}
-                        data-icon="fas fa-university text-primary"
-                      >
-                        Chuyển khoản
-                      </option>
-                      <option
-                        value={2}
-                        data-icon="fas fa-wallet text-warning"
-                      >
-                        Tiền mặt + Chuyển khoản
-                      </option>
-                    </select>
-                    <i
-                      className={
-                        paymentMethod === 0
-                          ? "fas fa-money-bill-wave text-success"
-                          : paymentMethod === 1
-                          ? "fas fa-university text-primary"
-                          : "fas fa-wallet text-warning"
-                      }
-                      style={{
-                        position: "absolute",
-                        left: "10px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        fontSize: "18px",
-                      }}
-                    ></i>
-                  </div>
-                </li>
-              </>
-            )}
-            <li>
-              <Button
-                type="primary"
-                className="bg-warning text-dark w-100"
-                onClick={handleCreate}
-              >
-                Tạo hóa đơn
-              </Button>
-            </li>
-          </ul>
-        </div>
-      </Col>
-    </Row>
-    <Modal
-      visible={isCustomerModalVisible}
-      onCancel={() => setIsCustomerModalVisible(false)}
-      footer={null}
-      width={1000}
-    >
-      <Customer onSelectCustomer={handleSelectCustomer} />
-    </Modal>
-  </div>
-);
+                        <option
+                          value={0}
+                          data-icon="fas fa-money-bill-wave text-success"
+                        >
+                          TIỀN MẶT
+                        </option>
+                        <option
+                          value={1}
+                          data-icon="fas fa-university text-primary"
+                        >
+                          CHUYỂN KHOẢN
+                        </option>
+                        <option
+                          value={2}
+                          data-icon="fas fa-wallet text-warning"
+                        >
+                          TIỀN MẶT + CHUYỂN KHOẢN
+                        </option>
+                      </select>
+                      <i
+                        className={
+                          paymentMethod === 0
+                            ? "fas fa-money-bill-wave text-success"
+                            : paymentMethod === 1
+                            ? "fas fa-university text-primary"
+                            : "fas fa-wallet text-warning"
+                        }
+                        style={{
+                          position: "absolute",
+                          left: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          fontSize: "18px",
+                        }}
+                      ></i>
+                    </div>
+                  </li>
+                </>
+              )}
+              <li>
+                <Button
+                  type="primary"
+                  className="bg-warning text-while w-100"
+                  onClick={handleCreate}
+                >
+                  TẠO HOÁ ĐƠN
+                </Button>
+              </li>
+            </ul>
+          </div>
+        </Col>
+      </Row>
+      <Modal
+        visible={isCustomerModalVisible}
+        onCancel={() => setIsCustomerModalVisible(false)}
+        footer={null}
+        width={1000}
+      >
+        <Customer onSelectCustomer={handleSelectCustomer} />
+      </Modal>
+    </div>
+  );
 }
 
 export default OrderItem;

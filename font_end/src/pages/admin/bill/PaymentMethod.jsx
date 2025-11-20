@@ -431,24 +431,18 @@ function PaymentMethod({ bill, onSuccess, onOpenPaymentModal, isModalOpen, setIs
       key: "index",
     },
     {
-      title: "Số tiền",
-      dataIndex: "totalMoney",
-      key: "totalMoney",
-      render: (x) => <FormatCurrency value={x} />,
-    },
-    {
-      title: "Thời gian",
-      dataIndex: "createAt",
-      key: "createAt",
-      render: (x) => <FormatDate date={x} />,
-    },
-    {
       title: "Mã giao dịch",
       dataIndex: "tradingCode",
       key: "tradingCode",
       render: (x) => (x === null ? "---" : x),
     },
     {
+      title: "Số tiền",
+      dataIndex: "totalMoney",
+      key: "totalMoney",
+      render: (x) => <FormatCurrency value={x} />,
+    },
+     {
       title: "Loại giao dịch",
       dataIndex: "type",
       key: "type",
@@ -462,6 +456,14 @@ function PaymentMethod({ bill, onSuccess, onOpenPaymentModal, isModalOpen, setIs
         </Tag>
       ),
     },
+    {
+      title: "Thời gian",
+      dataIndex: "createAt",
+      key: "createAt",
+      render: (x) => <FormatDate date={x} />,
+    },
+    
+   
     {
       title: "Nhân viên xác nhận",
       dataIndex: "createBy",
